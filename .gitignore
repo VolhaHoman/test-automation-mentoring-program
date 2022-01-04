@@ -1,0 +1,20 @@
+#Ignore IDE project files
+.settings
+.project
+.classpath
+.metadata
+**/bin
+*.iml
+*.ipr
+*.iws
+**/.idea
+**/.DS_Store
+
+#Build Dirs#
+output/
+.out/**
+
+
+overriding.properties
+
+debug.log
