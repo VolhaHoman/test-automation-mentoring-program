@@ -12,7 +12,7 @@
 
 #Build Dirs#
 output/
-.out/**
+**/out
 
 
 overriding.properties
