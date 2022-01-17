@@ -6,10 +6,9 @@ public class Calculator {
         return x * y;
     }
 
-    public double division(double x, double y) {
+    public double division(double x, double y) throws Exception {
         if (y == 0) {
-            System.out.println("Division by 0 is not allowed. The answer is 0");
-            return 0;
+            throw new Exception("Result exception: Division by 0 is not allowed");
         }
         return x / y;
     }
@@ -22,11 +21,11 @@ public class Calculator {
         return x - y;
     }
 
-    public double calculate(Formula formula) {
-        String operator = formula.operator;
+    public double calculate(Formula formula) throws Exception {
+        String operator = formula.getOperator();
 
-        double x = formula.x.doubleValue();
-        double y = formula.y.doubleValue();
+        double x = formula.getX().doubleValue();
+        double y = formula.getY().doubleValue();
 
         if ("*".equals(operator)) {
             return multiply(x, y);
@@ -40,7 +39,6 @@ public class Calculator {
         if ("-".equals(operator)) {
             return subtraction(x, y);
         }
-        System.out.println("Operator is not supported. The answer is 0");
-        return 0;
+        throw new Exception("Result exception: Invalid operator");
     }
 }
