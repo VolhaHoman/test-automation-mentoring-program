@@ -1,4 +1,6 @@
-package com.epam.goman.operator;
+package com.epam.goman.operator.impl;
+
+import com.epam.goman.operator.Operator;
 
 public class Multiply implements Operator {
 

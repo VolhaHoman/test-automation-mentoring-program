@@ -1,9 +1,10 @@
 package com.epam.goman;
 
-import com.epam.goman.model.Calculator;
 import com.epam.goman.model.Formula;
-import com.epam.goman.model.LocalCalculator;
-import com.epam.goman.validator.FormulaValidator;
+import com.epam.goman.model.exception.InvalidOperatorException;
+import com.epam.goman.model.exception.ParameterIsNullException;
+import com.epam.goman.service.Calculator;
+import com.epam.goman.service.impl.LocalCalculator;
 
 public class Main {
 
@@ -21,13 +22,17 @@ public class Main {
         seventhTest();
     }
 
-    private static void baseTest(Formula formula){
-        try{
+    private static void baseTest(Formula formula) {
+        try {
             Calculator calc = new LocalCalculator();
-            Number calculate = calc.calculate(formula, new FormulaValidator());
+            Number calculate = calc.calculate(formula);
             System.out.println(calculate);
-        } catch (Exception e){
-            e.printStackTrace();
+        } catch (ParameterIsNullException e) {
+            System.out.println("ParameterIsNullException: " + e.getLocalizedMessage());
+        } catch (ArithmeticException e) {
+            System.out.println("ArithmeticException: " + e.getLocalizedMessage());
+        } catch (InvalidOperatorException e) {
+            System.out.println("InvalidOperatorException: " + e.getLocalizedMessage());
         }
     }
 
@@ -75,6 +80,7 @@ public class Main {
         Formula formula = new Formula(-1, -5, "*");
         baseTest(formula);
     }
+
     private static void tenthTest() {
         Formula formula = new Formula(-15, -5, "-");
         baseTest(formula);
