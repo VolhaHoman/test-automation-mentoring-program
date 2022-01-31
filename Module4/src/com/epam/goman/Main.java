@@ -1,78 +1,88 @@
 package com.epam.goman;
 
+import com.epam.goman.model.Formula;
+import com.epam.goman.model.exception.InvalidOperatorException;
+import com.epam.goman.model.exception.ParameterIsNullException;
+import com.epam.goman.service.Calculator;
+import com.epam.goman.service.impl.LocalCalculator;
+
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
-        Calculator calc = new Calculator();
-        firstTest(calc);
-        secondTest(calc);
-        thirdTest(calc);
-        fourthTest(calc);
-        fifthTest(calc);
-        sixthTest(calc);
-        eighthTest(calc);
-        ninthTest(calc);
-        tenthTest(calc);
-        seventhTest(calc);
+
+        firstTest();
+        secondTest();
+        thirdTest();
+        fourthTest();
+        fifthTest();
+        sixthTest();
+        eighthTest();
+        ninthTest();
+        tenthTest();
+        seventhTest();
     }
 
-    private static void baseTest(Calculator calculator, Formula formula){
-        try{
-            formula.validate();
-            double calculate = calculator.calculate(formula);
+    private static void baseTest(Formula formula) {
+        try {
+            Calculator calc = new LocalCalculator();
+            Number calculate = calc.calculate(formula);
             System.out.println(calculate);
-        } catch (Exception e){
-            System.out.println(e.getLocalizedMessage());
+        } catch (ParameterIsNullException e) {
+            System.out.println("ParameterIsNullException: " + e.getLocalizedMessage());
+        } catch (ArithmeticException e) {
+            System.out.println("ArithmeticException: " + e.getLocalizedMessage());
+        } catch (InvalidOperatorException e) {
+            System.out.println("InvalidOperatorException: " + e.getLocalizedMessage());
         }
     }
 
-    private static void firstTest(Calculator calculator) {
+    private static void firstTest() {
         Formula formula = new Formula(1, 2, "+");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void secondTest(Calculator calculator) {
+    private static void secondTest() {
         Formula formula = new Formula(10, 2, "-");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void thirdTest(Calculator calculator) {
+    private static void thirdTest() {
         Formula formula = new Formula(9, .78652, "*");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void fourthTest(Calculator calculator) {
+    private static void fourthTest() {
         Formula formula = new Formula(10, 2.8, "/");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void fifthTest(Calculator calculator) {
+    private static void fifthTest() {
         Formula formula = new Formula(7, 2, "%");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void sixthTest(Calculator calculator) {
+    private static void sixthTest() {
         Formula formula = new Formula(10, 0, "/");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void seventhTest(Calculator calculator) {
+    private static void seventhTest() {
         Formula formula = new Formula(null, 0, "+");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void eighthTest(Calculator calculator) {
+    private static void eighthTest() {
         Formula formula = new Formula(-1, 0, "+");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 
-    private static void ninthTest(Calculator calculator) {
+    private static void ninthTest() {
         Formula formula = new Formula(-1, -5, "*");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
-    private static void tenthTest(Calculator calculator) {
+
+    private static void tenthTest() {
         Formula formula = new Formula(-15, -5, "-");
-        baseTest(calculator, formula);
+        baseTest(formula);
     }
 }
