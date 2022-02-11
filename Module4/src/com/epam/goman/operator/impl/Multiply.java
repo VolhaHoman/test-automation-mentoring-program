@@ -11,4 +11,9 @@ public class Multiply implements Operator {
         double yResult = y.doubleValue();
         return xResult * yResult;
     }
+
+    @Override
+    public String getOperatorValue() {
+        return "*";
+    }
 }

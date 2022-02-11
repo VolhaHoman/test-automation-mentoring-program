@@ -4,13 +4,20 @@ import com.epam.goman.model.Formula;
 import com.epam.goman.model.exception.InvalidOperatorException;
 import com.epam.goman.model.exception.ParameterIsNullException;
 import com.epam.goman.operator.Operator;
-import com.epam.goman.operator.impl.Division;
-import com.epam.goman.operator.impl.Multiply;
-import com.epam.goman.operator.impl.Subtraction;
-import com.epam.goman.operator.impl.Sum;
 import com.epam.goman.service.Calculator;
 
+import java.util.*;
+
 public class LocalCalculator implements Calculator {
+
+    private List <Operator> operators = new ArrayList<>();
+
+    public void addOperator(Operator operator) throws ParameterIsNullException {
+        if (operator == null) {
+            throw new ParameterIsNullException("Operator exception: Operator can't be null");
+        }
+        this.operators.add(operator);
+    }
 
     public Number calculate(Formula formula) throws ParameterIsNullException, InvalidOperatorException {
 
@@ -20,21 +27,18 @@ public class LocalCalculator implements Calculator {
         return operator.operate(formula.getX(), formula.getY());
     }
 
-    private Operator chooseOperator(String operator) throws InvalidOperatorException {
+    private Operator chooseOperator (String operator) throws InvalidOperatorException {
 
-        if ("*".equals(operator)) {
-            return new Multiply();
+        Iterator<Operator> iterator = operators.iterator();
+
+        while (iterator.hasNext()){
+            Operator next = iterator.next();
+            if (next.getOperatorValue().equals(operator)){
+                return next;
+            }
         }
-        if ("/".equals(operator)) {
-            return new Division();
-        }
-        if ("+".equals(operator)) {
-            return new Sum();
-        }
-        if ("-".equals(operator)) {
-            return new Subtraction();
-        }
-        throw new InvalidOperatorException("Result exception: Invalid operator");
+
+        throw new InvalidOperatorException("Operator not found");
     }
 
     private void validate(Formula formula) throws ParameterIsNullException {

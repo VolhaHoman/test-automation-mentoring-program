@@ -16,4 +16,9 @@ public class Division implements Operator {
         double yResult = y.doubleValue();
         return xResult / yResult;
     }
+
+    @Override
+    public String getOperatorValue() {
+        return "/";
+    }
 }
