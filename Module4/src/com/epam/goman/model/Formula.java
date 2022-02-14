@@ -43,4 +43,13 @@ public class Formula {
     public void setOperator(String operator) {
         this.operator = operator;
     }
+
+    @Override
+    public String toString() {
+        return "Formula{" +
+                "x=" + x +
+                ", y=" + y +
+                ", operator='" + operator + '\'' +
+                '}';
+    }
 }

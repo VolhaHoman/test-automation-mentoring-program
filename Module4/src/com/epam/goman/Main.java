@@ -47,15 +47,14 @@ public class Main {
 
     private static void baseTest(Formula formula, Calculator calc) {
         try {
-
             Number calculate = calc.calculate(formula);
             System.out.println(calculate);
         } catch (ParameterIsNullException e) {
             System.out.println("ParameterIsNullException: " + e.getLocalizedMessage());
         } catch (ArithmeticException e) {
             System.out.println("ArithmeticException: " + e.getLocalizedMessage());
-        } catch (InvalidOperatorException e) {
-            System.out.println("InvalidOperatorException: " + e.getLocalizedMessage());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getLocalizedMessage());
         }
     }
 

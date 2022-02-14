@@ -1,25 +1,25 @@
 package com.epam.goman.service.impl;
 
 import com.epam.goman.model.Formula;
-import com.epam.goman.model.exception.InvalidOperatorException;
 import com.epam.goman.model.exception.ParameterIsNullException;
 import com.epam.goman.operator.Operator;
 import com.epam.goman.service.Calculator;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LocalCalculator implements Calculator {
 
-    private List <Operator> operators = new ArrayList<>();
+    private Map<String, Operator> operators = new HashMap<>();
 
     public void addOperator(Operator operator) throws ParameterIsNullException {
         if (operator == null) {
             throw new ParameterIsNullException("Operator exception: Operator can't be null");
         }
-        this.operators.add(operator);
+        this.operators.put(operator.getOperatorValue(), operator);
     }
 
-    public Number calculate(Formula formula) throws ParameterIsNullException, InvalidOperatorException {
+    public Number calculate(Formula formula) throws ParameterIsNullException {
 
         validate(formula);
 
@@ -27,18 +27,11 @@ public class LocalCalculator implements Calculator {
         return operator.operate(formula.getX(), formula.getY());
     }
 
-    private Operator chooseOperator (String operator) throws InvalidOperatorException {
-
-        Iterator<Operator> iterator = operators.iterator();
-
-        while (iterator.hasNext()){
-            Operator next = iterator.next();
-            if (next.getOperatorValue().equals(operator)){
-                return next;
-            }
+    private Operator chooseOperator(String operator) {
+        if (operators.containsKey(operator)) {
+            return operators.get(operator);
         }
-
-        throw new InvalidOperatorException("Operator not found");
+        throw new IllegalArgumentException("Operator not found");
     }
 
     private void validate(Formula formula) throws ParameterIsNullException {
@@ -49,7 +42,7 @@ public class LocalCalculator implements Calculator {
         if (formula.getY() == null) {
             throw new ParameterIsNullException("Formula exception: Parameter y can't be null");
         }
-        if (formula.getOperator() == null || formula.getOperator().isBlank()){
+        if (formula.getOperator() == null || formula.getOperator().isBlank()) {
             throw new ParameterIsNullException("Formula exception: Operator can't be null or empty");
         }
     }

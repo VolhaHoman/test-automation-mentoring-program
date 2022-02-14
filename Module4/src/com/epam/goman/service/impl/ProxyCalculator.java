@@ -14,27 +14,27 @@ import java.util.Map;
 
 public class ProxyCalculator implements Calculator, History {
 
-    private Map<Formula, Number> cacheMap = new HashMap<>();
+    private Map<Formula, Number> cache = new HashMap<>();
 
     private Calculator calculator;
-    private List<Number> historyList = new ArrayList<>();
+    private List<Formula> history = new ArrayList<>();
 
     public ProxyCalculator(Calculator calculator) {
         this.calculator = calculator;
     }
 
     @Override
-    public Number calculate(Formula formula) throws ParameterIsNullException, InvalidOperatorException {
+    public Number calculate(Formula formula) throws ParameterIsNullException {
+        history.add(formula);
 
-        Number calculate = null;
-        if (cacheMap.containsKey(formula)) {
-            System.out.println("Cached value:");
-            calculate = cacheMap.get(formula);
-        } else {
-            calculate = calculator.calculate(formula);
-            cacheMap.put(formula, calculate);
+        Number calculate = cache.get(formula);
+
+        if (calculate != null){
+            System.out.println("Cached value: ");
+            return calculate;
         }
-        historyList.add(calculate);
+        calculate = calculator.calculate(formula);
+        cache.put(formula, calculate);
         return calculate;
     }
 
@@ -44,10 +44,10 @@ public class ProxyCalculator implements Calculator, History {
     }
 
     @Override
-    public Number getLast(int number) throws InvalidOperatorException {
-        if (historyList.size() < number || number <= 0) {
+    public Formula getLast(int number) throws InvalidOperatorException {
+        if (history.size() < number || number <= 0) {
             throw new InvalidOperatorException("History value with requested number:" + number + " not found");
         }
-        return historyList.get(number - 1);
+        return history.get(number - 1);
     }
 }
