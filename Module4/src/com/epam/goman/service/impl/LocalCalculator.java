@@ -1,6 +1,7 @@
 package com.epam.goman.service.impl;
 
 import com.epam.goman.model.Formula;
+import com.epam.goman.model.exception.EmptyCollectionExeption;
 import com.epam.goman.model.exception.ParameterIsNullException;
 import com.epam.goman.operator.Operator;
 import com.epam.goman.service.Calculator;
@@ -20,6 +21,10 @@ public class LocalCalculator implements Calculator {
     }
 
     public Number calculate(Formula formula) throws ParameterIsNullException {
+
+        if (operators.isEmpty()){
+            throw new EmptyCollectionExeption("Collection of operators is empty");
+        }
 
         validate(formula);
 

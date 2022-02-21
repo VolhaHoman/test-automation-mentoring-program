@@ -1,7 +1,7 @@
 package com.epam.goman;
 
 import com.epam.goman.model.Formula;
-import com.epam.goman.model.exception.InvalidOperatorException;
+import com.epam.goman.model.exception.EmptyCollectionExeption;
 import com.epam.goman.model.exception.ParameterIsNullException;
 import com.epam.goman.operator.impl.Division;
 import com.epam.goman.operator.impl.Multiply;
@@ -15,6 +15,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // Operators collection is empty
+        tryCalcWithEmptyOperators();
+
+
+
         ProxyCalculator calc = new ProxyCalculator(new LocalCalculator());
         try {
             calc.addOperator(new Division());
@@ -25,6 +30,7 @@ public class Main {
         } catch (ParameterIsNullException e) {
             System.out.println(e.getLocalizedMessage());
         }
+
         firstTest(calc);
         firstTest(calc);
         secondTest(calc);
@@ -36,13 +42,25 @@ public class Main {
         ninthTest(calc);
         tenthTest(calc);
         seventhTest(calc);
+        eleventhTest(calc);
         try {
             System.out.println(calc.getLast(2));
             System.out.println(calc.getLast(100));
-        } catch (InvalidOperatorException e) {
-            System.out.println(e.getLocalizedMessage());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Index out of bound exception: " + e.getLocalizedMessage());
         }
 
+    }
+
+    private static void tryCalcWithEmptyOperators() {
+        ProxyCalculator calcWithEmptyOperators = new ProxyCalculator(new LocalCalculator());
+        try {
+            calcWithEmptyOperators.calculate(new Formula(45, 32, "-"));
+        } catch (EmptyCollectionExeption e) {
+            System.out.println("Empty collection exception: " + e.getLocalizedMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
     }
 
     private static void baseTest(Formula formula, Calculator calc) {
@@ -105,6 +123,11 @@ public class Main {
 
     private static void tenthTest(Calculator calc) {
         Formula formula = new Formula(-15, -5, "-");
+        baseTest(formula, calc);
+    }
+
+    private static void eleventhTest(Calculator calc) {
+        Formula formula = new Formula(655, -5, null);
         baseTest(formula, calc);
     }
 }
