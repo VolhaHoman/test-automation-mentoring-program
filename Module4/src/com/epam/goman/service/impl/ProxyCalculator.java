@@ -1,8 +1,6 @@
 package com.epam.goman.service.impl;
 
 import com.epam.goman.model.Formula;
-import com.epam.goman.model.exception.EmptyCollectionExeption;
-import com.epam.goman.model.exception.ParameterIsNullException;
 import com.epam.goman.operator.Operator;
 import com.epam.goman.service.Calculator;
 import com.epam.goman.service.History;
@@ -24,7 +22,7 @@ public class ProxyCalculator implements Calculator, History {
     }
 
     @Override
-    public Number calculate(Formula formula) throws ParameterIsNullException {
+    public Number calculate(Formula formula) {
         history.add(formula);
 
         Number calculate = cache.get(formula);
@@ -39,18 +37,15 @@ public class ProxyCalculator implements Calculator, History {
     }
 
     @Override
-    public void addOperator(Operator operator) throws ParameterIsNullException {
+    public void addOperator(Operator operator) {
         calculator.addOperator(operator);
     }
 
     @Override
     public Formula getLast(int number) {
-        if (history.isEmpty()) {
-            throw new EmptyCollectionExeption("Empty collection exception: history is empty");
+        if (history.size() < number || number <= 0) {
+            throw new IndexOutOfBoundsException("History value with requested number " + number + " is not found");
         }
-//        if (history.size() < number || number <= 0) {
-//            throw new IndexOutOfBoundsException("History value with requested number:" + number + " not found");
-//        }
         return history.get(number - 1);
     }
 }
