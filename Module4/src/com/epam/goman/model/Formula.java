@@ -26,19 +26,13 @@ public class Formula {
 
     public Formula(Number x, Number y, String operator) {
 
-        this.x = x;
-        this.y = y;
-        this.operator = operator;
+        if (Objects.requireNonNull(operator, "Formula exception - Operator can't be null").isBlank()) {
+            throw new ParameterIsNullException("Formula exception - Operator can't be empty");
+        }
 
-        if (getX() == null) {
-            throw new ParameterIsNullException("Formula exception - Parameter x can't be null");
-        }
-        if (getY() == null) {
-            throw new ParameterIsNullException("Formula exception - Parameter y can't be null");
-        }
-        if (getOperator() == null || getOperator().isBlank()) {
-            throw new ParameterIsNullException("Formula exception - Operator can't be null or empty");
-        }
+        this.x = Objects.requireNonNull(x, "Formula exception - Parameter x can't be null");
+        this.y = Objects.requireNonNull(y, "Formula exception - Parameter y can't be null");
+        this.operator = operator;
     }
 
     public Number getX() {
