@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-03-04T08:35:08.764753Z</date>
+  <millis>1646382908764</millis>
+  <nanos>753000</nanos>
+  <sequence>0</sequence>
+  <logger>MAIN</logger>
+  <level>WARNING</level>
+  <class>com.epam.goman.service.impl.FormulaReader</class>
+  <method>getFormula</method>
+  <thread>1</thread>
+  <message>Expression doesn't match regExp pattern: 7%2</message>
+</record>
+<record>
+  <date>2022-03-04T08:35:08.804581Z</date>
+  <millis>1646382908804</millis>
+  <nanos>581000</nanos>
+  <sequence>1</sequence>
+  <logger>MAIN</logger>
+  <level>WARNING</level>
+  <class>com.epam.goman.service.impl.FormulaReader</class>
+  <method>getFormula</method>
+  <thread>1</thread>
+  <message>Expression doesn't match regExp pattern: null+0</message>
+</record>
+<record>
+  <date>2022-03-04T08:35:08.805663Z</date>
+  <millis>1646382908805</millis>
+  <nanos>663000</nanos>
+  <sequence>2</sequence>
+  <logger>MAIN</logger>
+  <level>WARNING</level>
+  <class>com.epam.goman.service.impl.FormulaReader</class>
+  <method>getFormula</method>
+  <thread>1</thread>
+  <message>Expression doesn't match regExp pattern: 655null-5</message>
+</record>
+<record>
+  <date>2022-03-04T08:35:08.806684Z</date>
+  <millis>1646382908806</millis>
+  <nanos>684000</nanos>
+  <sequence>3</sequence>
+  <logger>MAIN</logger>
+  <level>WARNING</level>
+  <class>com.epam.goman.service.impl.FormulaReader</class>
+  <method>getFormula</method>
+  <thread>1</thread>
+  <message>Expression doesn't match regExp pattern: null*3</message>
+</record>
+<record>
+  <date>2022-03-04T08:35:08.807471Z</date>
+  <millis>1646382908807</millis>
+  <nanos>471000</nanos>
+  <sequence>4</sequence>
+  <logger>MAIN</logger>
+  <level>WARNING</level>
+  <class>com.epam.goman.service.impl.FormulaReader</class>
+  <method>getFormula</method>
+  <thread>1</thread>
+  <message>Expression doesn't match regExp pattern: **2</message>
+</record>
+<record>
+  <date>2022-03-04T08:35:08.810113Z</date>
+  <millis>1646382908810</millis>
+  <nanos>113000</nanos>
+  <sequence>5</sequence>
+  <logger>MAIN</logger>
+  <level>WARNING</level>
+  <class>com.epam.goman.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Division by zero is not allowed</message>
+  <exception>
+    <message>java.lang.ArithmeticException: Division by zero is not allowed</message>
+    <frame>
+      <class>com.epam.goman.operator.impl.Division</class>
+      <method>operate</method>
+      <line>12</line>
+    </frame>
+    <frame>
+      <class>com.epam.goman.service.impl.LocalCalculator</class>
+      <method>calculate</method>
+      <line>26</line>
+    </frame>
+    <frame>
+      <class>com.epam.goman.service.impl.ProxyCalculator</class>
+      <method>calculate</method>
+      <line>34</line>
+    </frame>
+    <frame>
+      <class>com.epam.goman.Main</class>
+      <method>main</method>
+      <line>58</line>
+    </frame>
+  </exception>
+</record>
+</log>
