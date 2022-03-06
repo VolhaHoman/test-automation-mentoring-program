@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface Writer {
 
-    void writeResults(File file, List<Object> objects) throws IOException;
+    void write(File file, List<Object> objects) throws IOException;
 }

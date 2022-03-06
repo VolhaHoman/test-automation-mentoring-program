@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface Reader {
 
-    List<Formula> getFormula(File file) throws IOException;
+    List<Formula> read(File file) throws IOException;
 }

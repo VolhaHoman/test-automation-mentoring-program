@@ -6,14 +6,16 @@ import java.util.logging.Logger;
 
 public class CustomLogger {
 
-    private final Logger LOG = Logger.getLogger("MAIN");
+    private static final String FILES_LOG_TXT = "files/log.txt";
+    public final static Logger LOG = Logger.getLogger("MAIN");
 
-    public CustomLogger(String fileName) throws IOException {
-        FileHandler fh = new FileHandler(fileName);
+    static {
+        FileHandler fh = null;
+        try {
+            fh = new FileHandler(FILES_LOG_TXT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         LOG.addHandler(fh);
-    }
-
-    public Logger getLogger() {
-        return LOG;
     }
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class FormulaResultWriter implements Writer {
     @Override
-    public void writeResults(File file, List<Object> objects) throws IOException {
+    public void write(File file, List<Object> objects) throws IOException {
         FileOutputStream fos = null;
         OutputStreamWriter writer = null;
 

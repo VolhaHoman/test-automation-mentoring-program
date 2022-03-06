@@ -5,12 +5,15 @@ import com.epam.goman.model.exception.OperatorNotFoundException;
 import com.epam.goman.model.exception.ParameterIsNullException;
 import com.epam.goman.operator.Operator;
 import com.epam.goman.service.Calculator;
+import com.epam.goman.service.CustomLogger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class LocalCalculator implements Calculator {
 
+    private Logger logger = CustomLogger.LOG;
     private Map<String, Operator> operators = new HashMap<>();
 
     public void addOperator(Operator operator) throws ParameterIsNullException {
@@ -23,7 +26,10 @@ public class LocalCalculator implements Calculator {
     public Number calculate(Formula formula) throws ParameterIsNullException {
 
         Operator operator = chooseOperator(formula.getOperator());
-        return operator.operate(formula.getX(), formula.getY());
+        Number operate = operator.operate(formula.getX(), formula.getY());
+        logger.info(String.format("Calculate x: %s and y: %s with operator: %s. Result: %s",
+                formula.getX(), formula.getY(), formula.getOperator(), operate));
+        return operate;
     }
 
     private Operator chooseOperator(String operator) {

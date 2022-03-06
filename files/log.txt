@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2022-03-04T08:35:08.764753Z</date>
-  <millis>1646382908764</millis>
-  <nanos>753000</nanos>
+  <date>2022-03-06T17:03:09.447116Z</date>
+  <millis>1646586189447</millis>
+  <nanos>116000</nanos>
   <sequence>0</sequence>
   <logger>MAIN</logger>
   <level>WARNING</level>
@@ -14,9 +14,9 @@
   <message>Expression doesn't match regExp pattern: 7%2</message>
 </record>
 <record>
-  <date>2022-03-04T08:35:08.804581Z</date>
-  <millis>1646382908804</millis>
-  <nanos>581000</nanos>
+  <date>2022-03-06T17:03:09.491919Z</date>
+  <millis>1646586189491</millis>
+  <nanos>919000</nanos>
   <sequence>1</sequence>
   <logger>MAIN</logger>
   <level>WARNING</level>
@@ -26,9 +26,9 @@
   <message>Expression doesn't match regExp pattern: null+0</message>
 </record>
 <record>
-  <date>2022-03-04T08:35:08.805663Z</date>
-  <millis>1646382908805</millis>
-  <nanos>663000</nanos>
+  <date>2022-03-06T17:03:09.492672Z</date>
+  <millis>1646586189492</millis>
+  <nanos>672000</nanos>
   <sequence>2</sequence>
   <logger>MAIN</logger>
   <level>WARNING</level>
@@ -38,9 +38,9 @@
   <message>Expression doesn't match regExp pattern: 655null-5</message>
 </record>
 <record>
-  <date>2022-03-04T08:35:08.806684Z</date>
-  <millis>1646382908806</millis>
-  <nanos>684000</nanos>
+  <date>2022-03-06T17:03:09.493302Z</date>
+  <millis>1646586189493</millis>
+  <nanos>302000</nanos>
   <sequence>3</sequence>
   <logger>MAIN</logger>
   <level>WARNING</level>
@@ -50,9 +50,9 @@
   <message>Expression doesn't match regExp pattern: null*3</message>
 </record>
 <record>
-  <date>2022-03-04T08:35:08.807471Z</date>
-  <millis>1646382908807</millis>
-  <nanos>471000</nanos>
+  <date>2022-03-06T17:03:09.493904Z</date>
+  <millis>1646586189493</millis>
+  <nanos>904000</nanos>
   <sequence>4</sequence>
   <logger>MAIN</logger>
   <level>WARNING</level>
@@ -62,10 +62,58 @@
   <message>Expression doesn't match regExp pattern: **2</message>
 </record>
 <record>
-  <date>2022-03-04T08:35:08.810113Z</date>
-  <millis>1646382908810</millis>
-  <nanos>113000</nanos>
+  <date>2022-03-06T17:03:09.496483Z</date>
+  <millis>1646586189496</millis>
+  <nanos>483000</nanos>
   <sequence>5</sequence>
+  <logger>MAIN</logger>
+  <level>INFO</level>
+  <class>com.epam.goman.service.impl.LocalCalculator</class>
+  <method>calculate</method>
+  <thread>1</thread>
+  <message>Calculate x: 1.0 and y: 2.0 with operator: +. Result: 3.0</message>
+</record>
+<record>
+  <date>2022-03-06T17:03:09.497611Z</date>
+  <millis>1646586189497</millis>
+  <nanos>611000</nanos>
+  <sequence>6</sequence>
+  <logger>MAIN</logger>
+  <level>INFO</level>
+  <class>com.epam.goman.service.impl.LocalCalculator</class>
+  <method>calculate</method>
+  <thread>1</thread>
+  <message>Calculate x: 10.0 and y: 2.0 with operator: -. Result: 8.0</message>
+</record>
+<record>
+  <date>2022-03-06T17:03:09.498283Z</date>
+  <millis>1646586189498</millis>
+  <nanos>283000</nanos>
+  <sequence>7</sequence>
+  <logger>MAIN</logger>
+  <level>INFO</level>
+  <class>com.epam.goman.service.impl.LocalCalculator</class>
+  <method>calculate</method>
+  <thread>1</thread>
+  <message>Calculate x: 9.0 and y: 0.7865 with operator: *. Result: 7.0785</message>
+</record>
+<record>
+  <date>2022-03-06T17:03:09.498999Z</date>
+  <millis>1646586189498</millis>
+  <nanos>999000</nanos>
+  <sequence>8</sequence>
+  <logger>MAIN</logger>
+  <level>INFO</level>
+  <class>com.epam.goman.service.impl.LocalCalculator</class>
+  <method>calculate</method>
+  <thread>1</thread>
+  <message>Calculate x: 10.0 and y: 2.8 with operator: /. Result: 3.5714285714285716</message>
+</record>
+<record>
+  <date>2022-03-06T17:03:17.152105Z</date>
+  <millis>1646586197152</millis>
+  <nanos>105000</nanos>
+  <sequence>9</sequence>
   <logger>MAIN</logger>
   <level>WARNING</level>
   <class>com.epam.goman.Main</class>
@@ -82,7 +130,7 @@
     <frame>
       <class>com.epam.goman.service.impl.LocalCalculator</class>
       <method>calculate</method>
-      <line>26</line>
+      <line>29</line>
     </frame>
     <frame>
       <class>com.epam.goman.service.impl.ProxyCalculator</class>
@@ -92,8 +140,44 @@
     <frame>
       <class>com.epam.goman.Main</class>
       <method>main</method>
-      <line>58</line>
+      <line>52</line>
     </frame>
   </exception>
+</record>
+<record>
+  <date>2022-03-06T17:03:17.154056Z</date>
+  <millis>1646586197154</millis>
+  <nanos>56000</nanos>
+  <sequence>10</sequence>
+  <logger>MAIN</logger>
+  <level>INFO</level>
+  <class>com.epam.goman.service.impl.LocalCalculator</class>
+  <method>calculate</method>
+  <thread>1</thread>
+  <message>Calculate x: -1.0 and y: 0.0 with operator: +. Result: -1.0</message>
+</record>
+<record>
+  <date>2022-03-06T17:03:17.154945Z</date>
+  <millis>1646586197154</millis>
+  <nanos>945000</nanos>
+  <sequence>11</sequence>
+  <logger>MAIN</logger>
+  <level>INFO</level>
+  <class>com.epam.goman.service.impl.LocalCalculator</class>
+  <method>calculate</method>
+  <thread>1</thread>
+  <message>Calculate x: -1.0 and y: -5.0 with operator: *. Result: 5.0</message>
+</record>
+<record>
+  <date>2022-03-06T17:03:17.155750Z</date>
+  <millis>1646586197155</millis>
+  <nanos>750000</nanos>
+  <sequence>12</sequence>
+  <logger>MAIN</logger>
+  <level>INFO</level>
+  <class>com.epam.goman.service.impl.LocalCalculator</class>
+  <method>calculate</method>
+  <thread>1</thread>
+  <message>Calculate x: -15.0 and y: -5.0 with operator: -. Result: -10.0</message>
 </record>
 </log>

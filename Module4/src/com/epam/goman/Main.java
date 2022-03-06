@@ -18,7 +18,6 @@ import com.epam.goman.service.impl.ProxyCalculator;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,12 +28,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if (args.length != 3) {
+        if (args.length != 2) {
             throw new ArgumentsNotFoundException("File path is empty or null");
         }
 
-        CustomLogger customLogger = new CustomLogger(args[2]);
-        Logger logger = customLogger.getLogger();
+        Logger logger = CustomLogger.LOG;
 
         try {
 
@@ -43,26 +41,24 @@ public class Main {
             Reader reader = new FormulaReader(logger);
             Writer writer = new FormulaResultWriter();
 
-            List<Formula> formula = reader.getFormula(new File(args[0]));
+            List<Formula> formula = reader.read(new File(args[0]));
             calc.addOperator(new Sum());
             calc.addOperator(new Multiply());
             calc.addOperator(new Subtraction());
             calc.addOperator(new Division());
 
-            Iterator<Formula> iterator = formula.iterator();
-
-
-            while (iterator.hasNext()) {
-                Formula nextFormula = iterator.next();
+            for (Formula value:formula) {
                 try {
-                    Number calculate = calc.calculate(nextFormula);
-                    resultList.add(new FormulaDto(nextFormula.getOperator(), nextFormula.getX(), nextFormula.getY(), calculate));
+                    Number calculate = calc.calculate(value);
+                    resultList.add(new FormulaDto(value.getOperator(), value.getX(), value.getY(),
+                            calculate));
 
                 } catch (Exception ex) {
                     logger.log(Level.WARNING, ex.getLocalizedMessage(), ex);
                 }
             }
-            writer.writeResults(new File(args[1]), resultList);
+
+            writer.write(new File(args[1]), resultList);
 
         } catch (IOException e) {
             logger.log(Level.WARNING, e.getLocalizedMessage(), e);
