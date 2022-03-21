@@ -14,7 +14,12 @@
 output/
 **/out
 
+#txt files
+**files/log.txt
+
 log.txt
+
+target/
 
 overriding.properties
 
