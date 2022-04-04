@@ -28,7 +28,7 @@ public class ProxyCalculator implements Calculator, History {
         Number calculate = cache.get(formula);
 
         if (calculate != null){
-            System.out.println("Cached value: ");
+            System.out.println("Cached value: " + calculate);
             return calculate;
         }
         calculate = calculator.calculate(formula);

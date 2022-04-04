@@ -4,14 +4,14 @@ import com.epam.goman.model.exception.ParameterIsNullException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class FormulaTest {
 
     private static final int X = 1;
     private static final int Y = 4;
     private static final String SUM_OPERATOR = "+";
+    private static final String MULTIPLY_OPERATOR = "*";
     private static final Formula validFormula = new Formula(X, Y, SUM_OPERATOR);
     private static final String BLANK_OPERATOR = "";
 
@@ -73,10 +73,26 @@ class FormulaTest {
     }
 
     @Test
+    @DisplayName("Check negative testEquals")
+    void testNotEquals() {
+        Formula formula = new Formula(X, Y, SUM_OPERATOR);
+        Formula newFormula = new Formula(X, Y, MULTIPLY_OPERATOR);
+        assertNotEquals(formula, newFormula);
+    }
+
+    @Test
     @DisplayName("Check positive testHashCode")
-    void testHashCode() {
+    void testHashCodeEquals() {
         Formula formula = new Formula(X, Y, SUM_OPERATOR);
         Formula copiedFormula = new Formula(X, Y, SUM_OPERATOR);
         assertEquals(formula.hashCode(), copiedFormula.hashCode());
+    }
+
+    @Test
+    @DisplayName("Check negative testHashCode")
+    void testHashCodeNotEquals() {
+        Formula formula = new Formula(X, Y, SUM_OPERATOR);
+        Formula newFormula = new Formula(X, Y, MULTIPLY_OPERATOR);
+        assertNotEquals(formula.hashCode(), newFormula.hashCode());
     }
 }

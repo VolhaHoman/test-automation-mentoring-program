@@ -1,7 +1,6 @@
 package com.epam.goman.operator.impl;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,7 +8,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MultiplyTest {
 
@@ -48,12 +48,12 @@ class MultiplyTest {
         );
     }
 
-//    private static Stream<Arguments> provideParametersMax() {
-//        return Stream.of(
-//                Arguments.of(Integer.MAX_VALUE, 0, 0.0),
-//                Arguments.of(1.05, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
-//                Arguments.of(Double.MAX_VALUE, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
-//                Arguments.of(-Double.MAX_VALUE, Double.MAX_VALUE, Double.NEGATIVE_INFINITY)
-//        );
-//    }
+    private static Stream<Arguments> provideParametersMax() {
+        return Stream.of(
+                Arguments.of(Integer.MAX_VALUE, 0, 0.0),
+                Arguments.of(1.05, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
+                Arguments.of(Double.MAX_VALUE, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
+                Arguments.of(-Double.MAX_VALUE, Double.MAX_VALUE, Double.NEGATIVE_INFINITY)
+        );
+    }
 }

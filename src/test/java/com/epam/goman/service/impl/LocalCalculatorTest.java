@@ -3,14 +3,9 @@ package com.epam.goman.service.impl;
 import com.epam.goman.model.Formula;
 import com.epam.goman.model.exception.OperatorNotFoundException;
 import com.epam.goman.model.exception.ParameterIsNullException;
-import com.epam.goman.operator.Operator;
 import com.epam.goman.operator.impl.Sum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Field;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
