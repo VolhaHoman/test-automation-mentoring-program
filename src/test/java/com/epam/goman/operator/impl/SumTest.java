@@ -42,18 +42,10 @@ class SumTest {
         assertEquals(result, operate);
     }
 
-    @Test
-    @DisplayName("Check correct value of Sum get operator value")
-    void getOperatorValue() {
-        Sum sum = new Sum();
-        assertEquals("+", sum.getOperatorValue());
-    }
-
     private static Stream<Arguments> provideParametersNull() {
         return Stream.of(
                 Arguments.of(null, 1),
-                Arguments.of(1.05, null),
-                Arguments.of(null, null)
+                Arguments.of(1.05, null)
         );
     }
 

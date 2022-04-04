@@ -41,18 +41,10 @@ class SubtractionTest {
         assertEquals(result, operate);
     }
 
-    @Test
-    @DisplayName("Check correct value of Subtraction get operator value")
-    void getOperatorValue() {
-        Subtraction subtraction = new Subtraction();
-        assertEquals("-", subtraction.getOperatorValue());
-    }
-
     private static Stream<Arguments> provideParametersNull() {
         return Stream.of(
                 Arguments.of(null, 1),
-                Arguments.of(1.05, null),
-                Arguments.of(null, null)
+                Arguments.of(1.05, null)
         );
     }
 

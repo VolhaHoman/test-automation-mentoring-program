@@ -17,19 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class LocalCalculatorTest {
 
     @Test
-    @DisplayName("Check add operator")
-    void addOperator() throws NoSuchFieldException, IllegalAccessException {
-        LocalCalculator localCalculator = new LocalCalculator();
-        localCalculator.addOperator(new Sum());
-        Field operators = localCalculator.getClass().getDeclaredField("operators");
-        operators.setAccessible(true);
-        Map<String, Operator> operatorsResult = (Map<String, Operator>) operators.get(localCalculator);
-
-        Operator operator = operatorsResult.get("+");
-        assertEquals(operator.getClass(), Sum.class);
-    }
-
-    @Test
     @DisplayName("Check positive calculate")
     void calculate() {
         LocalCalculator calculator = new LocalCalculator();

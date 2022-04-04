@@ -34,34 +34,26 @@ class MultiplyTest {
 
     @ParameterizedTest
     @MethodSource("provideParametersMax")
-    @DisplayName("Negative Multiply max check")
+    @DisplayName("Check Multiply with max values")
     void operateNegativeMax(Number x, Number y, Number result) {
         Multiply multiplyOperate = new Multiply();
         Number operate = multiplyOperate.operate(x, y);
         assertEquals(result, operate);
     }
 
-    @Test
-    @DisplayName("Check correct value of Multiply get operator value")
-    void getOperatorValue() {
-        Multiply multiply = new Multiply();
-        assertEquals("*", multiply.getOperatorValue());
-    }
-
     private static Stream<Arguments> provideParametersNull() {
         return Stream.of(
                 Arguments.of(null, 1),
-                Arguments.of(1.05, null),
-                Arguments.of(null, null)
+                Arguments.of(1.05, null)
         );
     }
 
-    private static Stream<Arguments> provideParametersMax() {
-        return Stream.of(
-                Arguments.of(Integer.MAX_VALUE, 0, 0.0),
-                Arguments.of(1.05, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
-                Arguments.of(Double.MAX_VALUE, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
-                Arguments.of(-Double.MAX_VALUE, Double.MAX_VALUE, Double.NEGATIVE_INFINITY)
-        );
-    }
+//    private static Stream<Arguments> provideParametersMax() {
+//        return Stream.of(
+//                Arguments.of(Integer.MAX_VALUE, 0, 0.0),
+//                Arguments.of(1.05, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
+//                Arguments.of(Double.MAX_VALUE, Double.MAX_VALUE, Double.POSITIVE_INFINITY),
+//                Arguments.of(-Double.MAX_VALUE, Double.MAX_VALUE, Double.NEGATIVE_INFINITY)
+//        );
+//    }
 }

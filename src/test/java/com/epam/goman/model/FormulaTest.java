@@ -12,12 +12,8 @@ class FormulaTest {
     private static final int X = 1;
     private static final int Y = 4;
     private static final String SUM_OPERATOR = "+";
-    private static final String MULTIPLY_OPERATOR = "*";
-    private static final String SUBTRACTION_OPERATOR = "-";
     private static final Formula validFormula = new Formula(X, Y, SUM_OPERATOR);
-    private static final String DIVISION_OPERATOR = "/";
     private static final String BLANK_OPERATOR = "";
-    private static final String FORMULA_STRING_VALUE = "Formula{x=1, y=4, operator='+'}";
 
     @Test
     @DisplayName("Check if the operator is blank")
@@ -69,46 +65,7 @@ class FormulaTest {
     }
 
     @Test
-    @DisplayName("Check sum operator")
-    void setOperatorSum() {
-        Formula formula = new Formula(X, Y, SUM_OPERATOR);
-        formula.setOperator(DIVISION_OPERATOR);
-        assertEquals(DIVISION_OPERATOR, formula.getOperator());
-    }
-
-    @Test
-    @DisplayName("Check division operator")
-    void setOperatorDivision() {
-        Formula formula = new Formula(X, Y, DIVISION_OPERATOR);
-        formula.setOperator(DIVISION_OPERATOR);
-        assertEquals(DIVISION_OPERATOR, formula.getOperator());
-    }
-
-    @Test
-    @DisplayName("Check multiply operator")
-    void setOperatorMultiply() {
-        Formula formula = new Formula(X, Y, MULTIPLY_OPERATOR);
-        formula.setOperator(MULTIPLY_OPERATOR);
-        assertEquals(MULTIPLY_OPERATOR, formula.getOperator());
-    }
-
-    @Test
-    @DisplayName("Check subtraction operator")
-    void setOperatorSubtraction() {
-        Formula formula = new Formula(X, Y, SUBTRACTION_OPERATOR);
-        formula.setOperator(SUBTRACTION_OPERATOR);
-        assertEquals(SUBTRACTION_OPERATOR, formula.getOperator());
-    }
-
-    @Test
-    @DisplayName("Check toString for formula")
-    void testToString() {
-        Formula formula = new Formula(X, Y, SUM_OPERATOR);
-        assertEquals(FORMULA_STRING_VALUE, formula.toString());
-    }
-
-    @Test
-    @DisplayName("Check testEquals")
+    @DisplayName("Check positive testEquals")
     void testEquals() {
         Formula formula = new Formula(X, Y, SUM_OPERATOR);
         Formula copiedFormula = new Formula(X, Y, SUM_OPERATOR);
@@ -116,7 +73,7 @@ class FormulaTest {
     }
 
     @Test
-    @DisplayName("Check testHashCode")
+    @DisplayName("Check positive testHashCode")
     void testHashCode() {
         Formula formula = new Formula(X, Y, SUM_OPERATOR);
         Formula copiedFormula = new Formula(X, Y, SUM_OPERATOR);

@@ -32,14 +32,14 @@ class DivisionTest {
         });
     }
 
-    @ParameterizedTest
-    @MethodSource("provideParametersMax")
-    @DisplayName("Negative Division max check")
-    void operateNegativeMax(Number x, Number y, Number result) {
-        Division divisionOperate = new Division();
-        Number operate = divisionOperate.operate(x, y);
-        assertEquals(result, operate);
-    }
+//    @ParameterizedTest ------ HOW TO ADD THIS TEST TO THE "Positive Division check" ?
+//    @MethodSource("provideParametersMax")
+//    @DisplayName("Positive Division max check")
+//    void operateNegativeMax(Number x, Number y, Number result) {
+//        Division divisionOperate = new Division();
+//        Number operate = divisionOperate.operate(x, y);
+//        assertEquals(result, operate);
+//    }
 
     @Test
     @DisplayName("Negative Division by zero check")
@@ -50,25 +50,17 @@ class DivisionTest {
         });
     }
 
-    @Test
-    @DisplayName("Check correct value of Division get operator value")
-    void getOperatorValue() {
-        Division division = new Division();
-        assertEquals("/", division.getOperatorValue());
-    }
-
     private static Stream<Arguments> provideParametersNull() {
         return Stream.of(
                 Arguments.of(null, 1),
-                Arguments.of(1.05, null),
-                Arguments.of(null, null)
+                Arguments.of(1.05, null)
         );
     }
 
-    private static Stream<Arguments> provideParametersMax() {
-        return Stream.of(
-                Arguments.of(Double.MAX_VALUE, 1, Double.MAX_VALUE),
-                Arguments.of(Double.MAX_VALUE, Double.MAX_VALUE, 1.0)
-        );
-    }
+//    private static Stream<Arguments> provideParametersMax() {
+//        return Stream.of(
+//                Arguments.of(Double.MAX_VALUE, 1, Double.MAX_VALUE),
+//                Arguments.of(Double.MAX_VALUE, Double.MAX_VALUE, 1.0)
+//        );
+//    }
 }
