@@ -26,7 +26,7 @@ class DivisionTest {
     @ParameterizedTest
     @MethodSource({"providePositiveParametersWithMax"})
     @DisplayName("Positive Division and with max check")
-    void operateNegativeMax(Number x, Number y, Number result) {
+    void operatePositiveMax(Number x, Number y, Number result) {
         Division divisionOperate = new Division();
         Number operate = divisionOperate.operate(x, y);
         assertEquals(result, operate);

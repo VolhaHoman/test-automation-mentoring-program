@@ -35,7 +35,7 @@ class MultiplyTest {
     @ParameterizedTest
     @MethodSource("provideParametersMax")
     @DisplayName("Check Multiply with max values")
-    void operateNegativeMax(Number x, Number y, Number result) {
+    void operatePositiveMax(Number x, Number y, Number result) {
         Multiply multiplyOperate = new Multiply();
         Number operate = multiplyOperate.operate(x, y);
         assertEquals(result, operate);
