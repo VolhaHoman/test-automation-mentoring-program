@@ -4,7 +4,6 @@ import com.epam.goman.operator.Operator;
 
 public class Division implements Operator {
 
-
     @Override
     public Number operate(Number x, Number y) {
 

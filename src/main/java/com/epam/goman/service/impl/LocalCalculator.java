@@ -6,14 +6,14 @@ import com.epam.goman.model.exception.ParameterIsNullException;
 import com.epam.goman.operator.Operator;
 import com.epam.goman.service.Calculator;
 import com.epam.goman.service.CustomLogger;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class LocalCalculator implements Calculator {
 
-    private Logger logger = CustomLogger.LOG;
+    private final Logger logger = CustomLogger.LOG;
     private Map<String, Operator> operators = new HashMap<>();
 
     public void addOperator(Operator operator) throws ParameterIsNullException {

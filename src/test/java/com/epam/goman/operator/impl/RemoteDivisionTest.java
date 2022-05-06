@@ -11,33 +11,32 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class DivisionTest {
+class RemoteDivisionTest {
 
     @ParameterizedTest
     @MethodSource("provideParametersNull")
-    @DisplayName("Negative Division null check")
+    @DisplayName("Negative RemoteDivision null check")
     void operateNegativeNull(Number x, Number y) {
-        Division divisionOperate = new Division();
+        RemoteDivision remoteDivisionOperate = new RemoteDivision();
         assertThrows(NullPointerException.class, () -> {
-            Number operate = divisionOperate.operate(x, y);
+            Number operate = remoteDivisionOperate.operate(x, y);
         });
     }
 
     @ParameterizedTest
     @MethodSource({"providePositiveParametersWithMax"})
-    @DisplayName("Positive Division and with max check")
-    void operatePositiveMax(Number x, Number y, Number result) {
-        Division divisionOperate = new Division();
-        Number operate = divisionOperate.operate(x, y);
-        assertEquals(result, operate);
+    @DisplayName("Positive RemoteDivision and with max check")
+    void operatePositiveAndMax(Number x, Number y, Number result) {
+        RemoteDivision remoteDivisionOperate = new RemoteDivision();
+        assertEquals(result, remoteDivisionOperate.operate(x,y));
     }
 
     @Test
-    @DisplayName("Negative Division by zero check")
+    @DisplayName("Negative RemoteDivision by zero check")
     void operateNegativeZero() {
-        Division divisionOperate = new Division();
+        RemoteDivision remoteDivisionOperate = new RemoteDivision();
         assertThrows(ArithmeticException.class, () -> {
-            Number operate = divisionOperate.operate(5, 0);
+            Number operate = remoteDivisionOperate.operate(5, 0);
         });
     }
 

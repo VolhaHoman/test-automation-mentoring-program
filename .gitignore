@@ -18,6 +18,7 @@ output/
 **files/log.txt
 
 log.txt
+**.log
 
 target/
 

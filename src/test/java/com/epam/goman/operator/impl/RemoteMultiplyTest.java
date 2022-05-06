@@ -11,34 +11,34 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class MultiplyTest {
+class RemoteMultiplyTest {
 
     @ParameterizedTest
     @CsvSource({"2, 2, 4", "1.00, 1.05, 1.05"})
-    @DisplayName("Positive Multiply check")
+    @DisplayName("Positive RemoteMultiply check")
     void operatePositive(Double x, Double y, Double result) {
-        Multiply multiplyOperate = new Multiply();
-        Number operate = multiplyOperate.operate((Number) x, (Number) y);
+        RemoteMultiply remoteMultiplyOperate = new RemoteMultiply();
+        Number operate = remoteMultiplyOperate.operate((Number) x, (Number) y);
         assertEquals(result, (Number) operate);
     }
 
     @ParameterizedTest
     @MethodSource("provideParametersNull")
-    @DisplayName("Negative Multiply null check")
+    @DisplayName("Negative RemoteMultiply null check")
     void operateNegativeNull(Number x, Number y) {
-        Multiply multiplyOperate = new Multiply();
+        RemoteMultiply remoteMultiplyOperate = new RemoteMultiply();
         assertThrows(NullPointerException.class, () -> {
-            Number operate = multiplyOperate.operate(x, y);
+            Number operate = remoteMultiplyOperate.operate(x, y);
         });
     }
 
     @ParameterizedTest
     @MethodSource("provideParametersMax")
-    @DisplayName("Check Multiply with max values")
+    @DisplayName("Check RemoteMultiply with max values")
     void operatePositiveMax(Number x, Number y, Number result) {
-        Multiply multiplyOperate = new Multiply();
-        Number operate = multiplyOperate.operate(x, y);
-        assertEquals(result, operate);
+        RemoteMultiply remoteMultiplyOperate = new RemoteMultiply();
+        Number operate = remoteMultiplyOperate.operate(x, y);
+        assertEquals(result, (Number) operate);
     }
 
     private static Stream<Arguments> provideParametersNull() {
