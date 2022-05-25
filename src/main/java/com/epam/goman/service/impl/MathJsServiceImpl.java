@@ -5,7 +5,6 @@ import com.epam.goman.model.exception.RemoteOperatorException;
 import com.epam.goman.service.CustomLogger;
 import com.epam.goman.service.MathJsService;
 import io.restassured.response.Response;
-import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
